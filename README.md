@@ -83,3 +83,32 @@ Run `tab-color list` in your shell to preview:
 - `adwaita_dark`
 - `monokai_pro_octagon`
 - `monokai_soda`
+
+## Theme Credits & Attribution
+
+This project wouldn't look as good without the incredible color palettes designed by the community. Here are the original sources for the themes included:
+
+### Standalone Themes
+- **[Catppuccin](https://github.com/catppuccin/catppuccin)**
+- **[Tokyo Night](https://github.com/folke/tokyonight.nvim)**
+- **[Nord](https://github.com/nordtheme/nord)**
+- **[Gruvbox](https://github.com/morhetz/gruvbox)**
+- **[Solarized](https://github.com/altercation/ethanschoonover-solarized)**
+- **[Rosé Pine](https://github.com/rose-pine/rose-pine-theme)**
+- **[Dracula](https://github.com/dracula/dracula-theme)**
+- **[Everforest](https://github.com/sainnhe/everforest)**
+- **[Zenbones](https://github.com/mcchrish/zenbones.nvim)**
+- **[Nightfox](https://github.com/EdenEast/nightfox.nvim)**
+- **[Monokai Pro](https://monokai.pro)**
+
+### Ported Terminal Schemes
+These themes are sourced or adapted from the **[iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)** repository:
+- **Guezwhoz** (by Egor Lem)
+- **Pnevma** (by baskerville)
+- **London Soho Night** (by Scott Matthews)
+- **Rippedcasts**
+- **Synthwave Everything**
+- **Kanso Ink & Kanso Mist**
+- **Adwaita Dark**
+- **Monokai Soda**
+
