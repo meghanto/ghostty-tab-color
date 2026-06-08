@@ -6,11 +6,13 @@ FISH_CONF="${XDG_CONFIG_HOME:-$HOME/.config}/fish"
 
 echo "Installing ghostty-tab-color..."
 
-mkdir -p "$FISH_CONF/conf.d"
+mkdir -p "$FISH_CONF/conf.d" "$FISH_CONF/functions"
 
 cp "$SCRIPT_DIR/ghostty_tab_tint.sh" "$FISH_CONF/ghostty_tab_tint.sh"
 chmod +x "$FISH_CONF/ghostty_tab_tint.sh"
 
 cp "$SCRIPT_DIR/fish/ghostty-tab-color.fish" "$FISH_CONF/conf.d/ghostty-tab-color.fish"
+cp "$SCRIPT_DIR/fish/functions/tab-color.fish" "$FISH_CONF/functions/tab-color.fish"
 
 echo "Done. Open a new Ghostty tab to see it take effect."
+echo "Use 'tab-color [on|off|toggle]' to control tab tinting."

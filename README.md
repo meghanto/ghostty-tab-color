@@ -31,11 +31,22 @@ bash install.sh
 
 Open a new Ghostty tab to see it take effect.
 
+## Usage
+
+```fish
+tab-color         # toggle on/off
+tab-color on      # enable tinting
+tab-color off     # disable tinting (resets current tab to default background)
+```
+
+The setting persists across sessions via a fish universal variable.
+
 ## Uninstall
 
 ```bash
 rm ~/.config/fish/ghostty_tab_tint.sh
 rm ~/.config/fish/conf.d/ghostty-tab-color.fish
+rm ~/.config/fish/functions/tab-color.fish
 ```
 
 ## Tuning
