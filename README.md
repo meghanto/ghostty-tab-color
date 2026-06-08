@@ -93,7 +93,7 @@ This project wouldn't look as good without the incredible color palettes designe
 - **[Tokyo Night](https://github.com/folke/tokyonight.nvim)**
 - **[Nord](https://github.com/nordtheme/nord)**
 - **[Gruvbox](https://github.com/morhetz/gruvbox)**
-- **[Solarized](https://github.com/altercation/solarized)**
+- **[Solarized Dark Higher Contrast](https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/schemes/Solarized%20Dark%20Higher%20Contrast.itermcolors)** (a higher-contrast variation of the classic [Solarized](https://github.com/altercation/solarized) theme)
 - **[Rosé Pine](https://github.com/rose-pine/rose-pine-theme)**
 - **[Dracula](https://github.com/dracula/dracula-theme)**
 - **[Everforest](https://github.com/sainnhe/everforest)**
