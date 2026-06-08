@@ -1,25 +1,22 @@
 # ghostty-tab-color
 
-Automatically tints each [Ghostty](https://ghostty.org) tab a distinct color so you can tell them apart at a glance — no title-reading required.
+Automatically applies distinct premium dark themes to each [Ghostty](https://ghostty.org) tab so you can tell them apart at a glance.
 
-Each tab gets a unique background derived from your current theme's background color via a hue rotation in [OKLCH](https://oklch.com/) (perceptually uniform), so all tints have equal perceived luminosity and stay in harmony with your theme. Works on both dark and light themes.
+Instead of just shifting the hue of your background, this version applies complete curated color palettes (background, foreground, cursor, and the full 16 ANSI colors) atomically using terminal escape sequences.
 
-![15 Ghostty tabs each with a distinct subtle background tint](.github/preview.png)
+## Features
 
-## How it works
-
-- Reads your Ghostty background color directly from your config
-- Converts it to OKLCH and rotates the hue ±90° in 15 steps (~12.86° apart)
-- Reduces chroma by 1% per step away from center, keeping extreme hues softer
-- Rescales linear RGB to match the original background's luminance (Y) exactly
-- Assigns each tab a slot via its TTY number — deterministic and stable for the tab's lifetime
-- Applies the tint via OSC 11, which Ghostty scopes per terminal session
+- **Dynamic Theme Cycling**: Cycles through 9 visually distinct premium dark themes (like Catppuccin, Nord, Gruvbox, Everforest, Tokyo Night) based on the tab's TTY slot.
+- **Forced Theme Mode**: Force a specific theme for the current tab using `tab-color theme <theme_name>`.
+- **Per-Project Themes**: Automatically applies themes when changing directories if a `.config/.tab-theme` file is present.
+- **Truecolor Preview List**: Run `tab-color list` to see all available themes rendered with truecolor swatches directly in your terminal.
+- **Atomic Operations & Cache**: Caches parsed theme colors in Fish universal variables to keep startup instantaneous, and writes the entire color palette in a single atomic sequence.
 
 ## Requirements
 
 - [Ghostty](https://ghostty.org)
 - [fish shell](https://fishshell.com)
-- `bash` and `awk` (both ship with macOS)
+- `bash` (ships with macOS)
 
 ## Install
 
@@ -34,33 +31,55 @@ Open a new Ghostty tab to see it take effect.
 ## Usage
 
 ```fish
-tab-color         # toggle on/off
-tab-color on      # enable tinting
-tab-color off     # disable tinting (resets current tab to default background)
+tab-color                   # Toggle tab color cycling on/off
+tab-color on                # Enable dynamic theme cycling
+tab-color off               # Disable theme overrides (reverts to default)
+tab-color status            # Show current theme and application status
+tab-color list              # List all 20 premium dark themes with color previews
+tab-color random            # Apply a random theme to the current tab
+tab-color theme <name>      # Force a specific theme (e.g., catppuccin, nord, gruvbox)
 ```
 
-The setting persists across sessions via a fish universal variable.
+### Per-Project Themes
+
+Create a `.config/.tab-theme` file in any directory with the subcommand you want to run. For example:
+```bash
+# In your project's .config/.tab-theme:
+theme tokyonight
+```
+When you `cd` into that directory, fish will automatically apply the Tokyo Night theme to that tab.
 
 ## Uninstall
 
 ```bash
-rm ~/.config/fish/ghostty_tab_tint.sh
+rm ~/.config/fish/ghostty_tab_theme.sh
 rm ~/.config/fish/conf.d/ghostty-tab-color.fish
 rm ~/.config/fish/functions/tab-color.fish
+rm ~/.config/fish/functions/_tab_color_render_line.fish
+rm ~/.config/fish/functions/_ghostty_tab_chpwd.fish
+rm ~/.config/fish/completions/tab-color.fish
 ```
 
-## Tuning
+## Available Themes
 
-All parameters are in `ghostty_tab_tint.sh`:
-
-| Parameter | Default | Effect |
-|-----------|---------|--------|
-| Hue range | ±90° | Total arc of color spread |
-| Steps | 15 | Number of distinct tab colors before repeating |
-| Chroma taper | 1% per step | How much softer the extreme hues are |
-
-To change the number of steps, also update the modulo in `fish/ghostty-tab-color.fish`:
-```fish
-set -l _slot (math "($(tty | grep -o '[0-9]*$')) % 15 + 1")
-#                                                        ^^ change this
-```
+Run `tab-color list` in your shell to preview:
+- `london_soho_night`
+- `solarized`
+- `synthwave_everything`
+- `zenbones_dark`
+- `nightfox`
+- `nord`
+- `catppuccin`
+- `gruvbox`
+- `everforest`
+- `tokyonight`
+- `rosepine`
+- `dracula`
+- `pnevma`
+- `rippedcasts`
+- `kanso_ink`
+- `kanso_mist`
+- `guezwhoz`
+- `adwaita_dark`
+- `monokai_pro_octagon`
+- `monokai_soda`
